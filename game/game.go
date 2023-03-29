@@ -1,4 +1,5 @@
 package game
+
 import (
 	"fmt"
 	"math/rand"
@@ -6,12 +7,12 @@ import (
 )
 
 type Guessing struct {
-	guess int 
-	trialcount int 
-	NumberOfTriesAllowed int 
+	guess           int
+	trialcount      int
+	AttemptsAllowed int
 }
 
-func (g Guessing) Play(){
+func (g Guessing) Play() {
 	g.trialcount = 1
 	source := rand.NewSource(time.Now().UnixNano())
 	randomizer := rand.New(source)
@@ -20,7 +21,7 @@ func (g Guessing) Play(){
 	for {
 		fmt.Println("Please input your guess")
 		fmt.Scan(&g.guess)
-		if g.trialcount > g.NumberOfTriesAllowed {
+		if g.trialcount > g.AttemptsAllowed {
 			fmt.Println("You lose")
 			break
 		} else {
@@ -37,4 +38,3 @@ func (g Guessing) Play(){
 
 	}
 }
-
