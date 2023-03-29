@@ -22,7 +22,7 @@ func Start() {
 		g := Guessing{AttemptsAllowed: 3}
 		g.Play()
 	case 3:
-		r := Racer{}
+		r := SpeedRacer{}
 		r.Play()
 	case 4:
 		b := Boardface{}
