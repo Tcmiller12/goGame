@@ -21,8 +21,8 @@ func main() {
 	for {
 		fmt.Println("Please input your guess")
 		fmt.Scan(&guess)
-		//Increased attempt count from 3 to 10
-		if trialcount > 10 {
+		//Determines attempt count
+		if trialcount > 5 {
 			fmt.Println("You lose")
 			break
 		} else {
