@@ -4,7 +4,8 @@ import "github.com/temiller/goGame/game"
 
 
 func main() {
-	g := game.Guessing{}
+	g := game.Guessing{NumberOfTriesAllowed:3}
 	g.Play()
+
 }
 

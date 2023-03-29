@@ -8,6 +8,7 @@ import (
 type Guessing struct {
 	guess int 
 	trialcount int 
+	NumberOfTriesAllowed int 
 }
 
 func (g Guessing) Play(){
@@ -19,7 +20,7 @@ func (g Guessing) Play(){
 	for {
 		fmt.Println("Please input your guess")
 		fmt.Scan(&g.guess)
-		if g.trialcount > 3 {
+		if g.trialcount > g.NumberOfTriesAllowed {
 			fmt.Println("You lose")
 			break
 		} else {
