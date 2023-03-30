@@ -14,21 +14,21 @@ func Start() {
 	`
 	fmt.Println(menu)
 	fmt.Scan(&selectedGame)
-	switch selectedGame {
-	case 1:
-		p := Pokemon{}
-		p.Play()
-	case 2:
-		g := Guessing{AttemptsAllowed: 3}
-		g.Play()
-	case 3:
-		r := SpeedRacer{}
-		r.Play()
-	case 4:
-		b := Boardface{}
-		b.Play()
-	default:
-		fmt.Print("Option selected is not valid")
+	if selectedGame == 1 {
+		p := pokemon{}
+	 	p.Play()
+		
+	} else if selectedGame == 2 {
+		g := guessing{AttemptsAllowed: 3}
+	 	g.Play()
+	} else if selectedGame == 3 {
+		r := speedRacer{}
+	 	r.Play()
+	} else if selectedGame == 4 {
+		b := boardFace{}
+	 	b.Play()
 	}
+	
+
 
 }

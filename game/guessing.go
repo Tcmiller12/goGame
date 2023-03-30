@@ -6,13 +6,13 @@ import (
 	"time"
 )
 
-type Guessing struct {
+type guessing struct {
 	guess           int
 	trialcount      int
 	AttemptsAllowed int
 }
 
-func (g Guessing) Play() {
+func (g guessing) Play() {
 	g.trialcount = 1
 	source := rand.NewSource(time.Now().UnixNano())
 	randomizer := rand.New(source)

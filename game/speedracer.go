@@ -2,9 +2,9 @@ package game
 
 import "fmt"
 
-type SpeedRacer struct {
+type speedRacer struct {
 }
 
-func (r SpeedRacer) Play() {
+func (r speedRacer) Play() {
 	fmt.Print("Sorry, this Game has not being implemented. Come back again")
 }
