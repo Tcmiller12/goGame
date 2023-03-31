@@ -27,7 +27,10 @@ func Start() {
 	} else if selectedGame == 4 {
 		b := boardFace{}
 	 	b.Play()
+	} else {
+		fmt.Print("Option selected is not valid")
 	}
+	
 	
 
 
