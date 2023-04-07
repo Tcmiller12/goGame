@@ -99,14 +99,14 @@ func (p pokemon) fight(fighter1, fighter2 PokemonCharacter) (PokemonCharacter, b
 
 func (p pokemon) Play() {
     var numRounds int
-    fmt.Println("How many rounds do you want to play out of 5?")
+    fmt.Println("How many rounds do you want to play out of 6?")
     _, err := fmt.Scan(&numRounds)
     if err != nil {
         fmt.Println("The number of rounds must be a number")
         return
     }
-    if numRounds <= 0 || numRounds > 5 {
-        fmt.Println("The number of rounds must be between 1 and 5")
+    if numRounds <= 0 || numRounds > 6 {
+        fmt.Println("The number of rounds must be between 1 and 6")
         return
     }
     p.start(numRounds)
