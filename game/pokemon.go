@@ -62,9 +62,9 @@ func (p pokemon) start(numRounds int) {
             fmt.Printf("Sorry you lost the fight to: %s\n", winner.Name)
             continue
         }
-        if !isDraw {
-            fmt.Println("You won Round 1")
-        }
+        // if !isDraw {
+        //     fmt.Printf("It's a draw!")
+        // }
 
         fmt.Printf("Round %d: Your Pokemon '%s' (strength = %d); Fights '%s' (strength = '%d')\n", round, p.userSelection.Name, p.userSelection.strength, fighter2.Name, fighter2.strength)
         winner, isDraw = p.fight(p.userSelection, fighter2)
@@ -73,16 +73,16 @@ func (p pokemon) start(numRounds int) {
             continue
         }
         if !isDraw {
-            fmt.Println("You won Round 2")
+            fmt.Println("You won the Round")
         }
 
         fmt.Printf("Round %d: Your Pokemon '%s' (strength = %d); Fights '%s' (strength = '%d')\n", round, p.userSelection.Name, p.userSelection.strength, fighter3.Name, fighter3.strength)
         winner, isDraw = p.fight(p.userSelection, fighter3)
         if winner != p.userSelection {
             fmt.Printf("Sorry you lost the fight to: %s\n", winner.Name)
-            continue
+            // continue
         }
-        fmt.Println("Congratulations, you won all 3 rounds")
+       
     }
 }
 
