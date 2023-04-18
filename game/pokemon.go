@@ -7,21 +7,21 @@ import (
 )
 
 type pokemon struct {
-    allCharacters []PokemonCharacter
     userSelection PokemonCharacter
 }
-
+// sets random strength, called on line 24
 func (p pokemon) getRandomStrength(min, max int) int {
     return rand.Intn(max-min+1) + min
 }
-
+// := declare/set variable value
 func (p pokemon) start(numRounds int) {
     rand.Seed(time.Now().UnixNano())
-    p.allCharacters = make([]PokemonCharacter, 6)
+    allCharacters := [6]PokemonCharacter{}
     names := []string{"Pikachu", "Blossomite", "Charmander", "Ditto", "Eevee", "Flareon"}
     // setup characters
-    for i := 0; i < 6; i++ {
-        p.allCharacters[i] = PokemonCharacter{Name: names[i], strength: p.getRandomStrength(80, 300)}
+    
+    for i := 0; i < len(allCharacters); i++ {
+        allCharacters[i] = PokemonCharacter{Name: names[i], strength: p.getRandomStrength(80, 300)}
     }
     // ask user to pick one
     fmt.Println("Select the Pokemon Character You Want: ")
@@ -38,12 +38,12 @@ func (p pokemon) start(numRounds int) {
         fmt.Println("The selection must be a number representing the character")
         return
     }
-    if selectedIndex <= 0 || selectedIndex >= len(p.allCharacters) {
-        fmt.Println("The selection is not valid")
+    if selectedIndex <= 0 || selectedIndex >= len(allCharacters) {
+        fmt.Printf("The selection '%d' is not valid \n",selectedIndex)
         return
     }
     selectedIndex = selectedIndex - 1
-    p.userSelection = p.allCharacters[selectedIndex]
+    p.userSelection = allCharacters[selectedIndex]
 
     for round := 1; round <= numRounds; round++ {
         // select 3 random fighters
@@ -52,9 +52,9 @@ func (p pokemon) start(numRounds int) {
         number2 := getRandomNumber(5, selectedIndex, number1)
         number3 := getRandomNumber(5, selectedIndex, number1, number2)
 
-        fighter1 := p.allCharacters[number1]
-        fighter2 := p.allCharacters[number2]
-        fighter3 := p.allCharacters[number3]
+        fighter1 := allCharacters[number1]
+        fighter2 := allCharacters[number2]
+        fighter3 := allCharacters[number3]
 
         fmt.Printf("Round %d: Your Pokemon '%s' (strength = %d); Fights '%s' (strength = '%d')\n", round, p.userSelection.Name, p.userSelection.strength, fighter1.Name, fighter1.strength)
         winner, isDraw := p.fight(p.userSelection, fighter1)
@@ -99,14 +99,14 @@ func (p pokemon) fight(fighter1, fighter2 PokemonCharacter) (PokemonCharacter, b
 
 func (p pokemon) Play() {
     var numRounds int
-    fmt.Println("How many rounds do you want to play out of 6?")
+    fmt.Println("How many rounds do you want to play?")
     _, err := fmt.Scan(&numRounds)
     if err != nil {
         fmt.Println("The number of rounds must be a number")
         return
     }
-    if numRounds <= 0 || numRounds > 6 {
-        fmt.Println("The number of rounds must be between 1 and 6")
+    if numRounds <= 0 {
+        fmt.Println("The number of rounds must be greater than 0")
         return
     }
     p.start(numRounds)
