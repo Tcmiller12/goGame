@@ -2,8 +2,6 @@ package game
 
 import (
 	"fmt"
-	"math/rand"
-	"time"
 )
 
 type guessing struct {
@@ -14,9 +12,7 @@ type guessing struct {
 
 func (g guessing) Play() {
 	g.trialcount = 1
-	source := rand.NewSource(time.Now().UnixNano())
-	randomizer := rand.New(source)
-	secrectNumber := randomizer.Intn(10)
+	secrectNumber := getRandomNumber(10)
 	fmt.Println("Guess the number")
 	for {
 		fmt.Println("Please input your guess")
