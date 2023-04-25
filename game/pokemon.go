@@ -19,7 +19,7 @@ func (p pokemon) start(numRounds int) {
     allCharacters := [6]PokemonCharacter{}
     names := []string{"Pikachu", "Blossomite", "Charmander", "Ditto", "Eevee", "Flareon"}
     // setup characters
-    
+     lastName := names[len(names)-1]
     for i := 0; i < len(allCharacters); i++ {
         allCharacters[i] = PokemonCharacter{Name: names[i], strength: p.getRandomStrength(80, 300)}
     }
