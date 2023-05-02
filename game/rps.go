@@ -7,31 +7,40 @@ import (
 )
 
 func main() {
-    options := []string{"rock", "paper", "scissors"}
+    options := []string{"rock", "paper", "scissors", "knife"}
 
-    // Generate a random integer between 0 and 2
     rand.Seed(time.Now().UnixNano())
-    computerChoice := rand.Intn(3)
+    computerChoice := RPS(rand.Intn(4))
 
-    // Read the player's choice 
-    var playerChoice int
-    fmt.Println("Enter 0 for rock, 1 for paper, 2 for scissors:")
+    var playerChoice RPS
+    fmt.Println("Enter 0 for rock, 1 for paper, 2 for scissors, 3 for knife:")
     fmt.Scan(&playerChoice)
 
-    // Print the choices
+    if playerChoice < 0 || playerChoice > 3 {
+        fmt.Println("Invalid choice! Please pick a number between 0 and 3.")
+        return
+    }
+
     fmt.Printf("Player choice: %s\n", options[playerChoice])
     fmt.Printf("Computer choice: %s\n", options[computerChoice])
 
-    // Determine the winner
     if playerChoice == computerChoice {
         fmt.Println("It's a tie!")
-    } else if (playerChoice == 0 && computerChoice == 2) ||
-              (playerChoice == 1 && computerChoice == 0) ||
-              (playerChoice == 2 && computerChoice == 1) {
+    } else if (playerChoice == rock && computerChoice == scissors) ||
+              (playerChoice == paper && computerChoice == rock) ||
+              (playerChoice == scissors && computerChoice == paper) ||
+              (playerChoice == knife && computerChoice == paper) ||
+              (playerChoice == scissors && computerChoice == knife) {
         fmt.Println("Player wins!")
     } else {
         fmt.Println("Computer wins!")
     }
 }
-
-//return error if player picks too high or low of number
+//enumeration
+type RPS int 
+const(
+ rock RPS = iota
+ paper
+ scissors
+ knife
+)
